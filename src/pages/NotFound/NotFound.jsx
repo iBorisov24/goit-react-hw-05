@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 export default function NotFound() {
 	return (
 		<>
-			Sorry, not founded page
-			<Link to={'/'} />
+			<p>Sorry, not founded page</p>
+			<Link to={'/'}>Go Home</Link>
 		</>
 	);
 }

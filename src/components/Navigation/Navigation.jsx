@@ -4,7 +4,7 @@ export default function Navigation() {
 		<>
 			<NavLink to={'/'}>Home</NavLink>
 
-			{/* <NavLink to={'/Movies'}>Movies</NavLink> */}
+			<NavLink to={'/Movies'}>Movies</NavLink>
 		</>
 	);
 }

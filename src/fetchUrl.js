@@ -18,3 +18,18 @@ export async function fetchFilmInfo(movieId) {
 	const request = await axios.get(`${url}${movieId}`, options);
 	return request.data;
 }
+export async function fetchCastInfo(movieId) {
+	const url = 'https://api.themoviedb.org/3/movie/';
+	const request = await axios.get(`${url}${movieId}/credits`, options);
+	return request.data;
+}
+export async function fetchReviewsInfo(movieId) {
+	const url = 'https://api.themoviedb.org/3/movie/';
+	const request = await axios.get(`${url}${movieId}/reviews`, options);
+	return request.data;
+}
+export async function fetchFilmByQuery(query) {
+	const url = `https://api.themoviedb.org/3/search/movie?query=${query}`;
+	const request = await axios.get(url, options);
+	return request.data;
+}
