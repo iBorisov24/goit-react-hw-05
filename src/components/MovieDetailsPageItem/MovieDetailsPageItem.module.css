@@ -1,0 +1,15 @@
+.block {
+	background-color: powderblue;
+	padding: 25px;
+	margin-bottom: 50px;
+	box-shadow: 0px 10px 5px black;
+	border-radius: 10px;
+	display: flex;
+	gap: 20px;
+}
+.img {
+	border-radius: 10px;
+}
+.title {
+	font-size: 40px;
+}

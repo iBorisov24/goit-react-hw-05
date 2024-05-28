@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
+import css from './MoviesList.module.css';
 export default function MoviesList({ location, filmListByQuery }) {
 	return (
-		<ul>
+		<ol className={css.list}>
 			{filmListByQuery.map(item => {
 				return (
-					<li key={item.id}>
-						<Link to={`${item.id}`} state={location}>
+					<li className={css.item} key={item.id}>
+						<Link className={css.listItem} to={`${item.id}`} state={location}>
 							{item.original_title}
 						</Link>
 					</li>
 				);
 			})}
-		</ul>
+		</ol>
 	);
 }

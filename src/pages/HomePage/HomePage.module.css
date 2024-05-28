@@ -1,0 +1,15 @@
+.list {
+	padding-left: 25px;
+}
+.listItem {
+}
+.link {
+	font-size: 30px;
+}
+.link:hover {
+	color: brown;
+}
+.title {
+	font-size: 30px;
+	color: blue;
+}

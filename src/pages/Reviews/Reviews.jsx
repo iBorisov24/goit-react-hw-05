@@ -3,7 +3,8 @@ import { fetchReviewsInfo } from '../../fetchUrl';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-
+import toast, { Toaster } from 'react-hot-toast';
+import css from './Reviews.module.css';
 export default function Reviews() {
 	const { movieID } = useParams({});
 	const [reviewsInfo, setReviewsInfo] = useState([]);
@@ -14,7 +15,12 @@ export default function Reviews() {
 			try {
 				setLoader(true);
 				const result = await fetchReviewsInfo(movieID);
-				setReviewsInfo(result.results);
+				if (result.results.length < 1) {
+					// toast.error('Sorry, we dont have reviews to this film');
+					alert('Sorry, we dont have reviews info for this movie');
+				} else {
+					setReviewsInfo(result.results);
+				}
 			} catch (error) {
 				setError(true);
 				console.log(error);
@@ -24,20 +30,18 @@ export default function Reviews() {
 		};
 		fetchCast();
 	}, [movieID]);
-	return reviewsInfo.length > 0 ? (
-		<ul>
+	return (
+		<ul className={css.list}>
 			{reviewsInfo.map(item => {
 				return (
-					<li key={item.id}>
-						<h2>{item.author}</h2>
-						<p>{item.content}</p>
+					<li className={css.block} key={item.id}>
+						<h2 className={css.title}>{item.author}</h2>
+						<p className={css.review}>{item.content}</p>
 					</li>
 				);
 			})}
 			{loader && <Loader />}
 			{error && <ErrorMessage />}
 		</ul>
-	) : (
-		<p>Sorry, this film not have reviews</p>
 	);
 }

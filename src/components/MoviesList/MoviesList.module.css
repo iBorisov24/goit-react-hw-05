@@ -1,0 +1,12 @@
+.list {
+	padding-left: 25px;
+}
+.listItem {
+	font-size: 30px;
+}
+.item {
+	padding-bottom: 10px;
+}
+.listItem:hover {
+	color: brown;
+}

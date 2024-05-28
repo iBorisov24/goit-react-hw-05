@@ -1,0 +1,27 @@
+.form {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 50px;
+}
+.input {
+	padding: 10px 30px;
+	border-radius: 10px;
+	border-color: transparent;
+	outline: transparent;
+}
+.input:hover,
+.input:focus {
+	border-color: brown;
+}
+.btn {
+	cursor: pointer;
+	padding: 10px 35px;
+	border-radius: 10px;
+	border-color: transparent;
+	background-color: blue;
+	color: white;
+	font-size: 25px;
+}
+.btn:hover {
+	background-color: brown;
+}

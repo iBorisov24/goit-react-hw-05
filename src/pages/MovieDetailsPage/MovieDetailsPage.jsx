@@ -1,15 +1,18 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchFilmInfo } from '../../fetchUrl';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import MovieDetailsPageItem from '../../components/MovieDetailsPageItem/MovieDetailsPageItem';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import css from './MovieDetailsPage.module.css';
 export default function MovieDetailsPage() {
 	const { movieID } = useParams({});
 	const [movieInfo, setMovieInfo] = useState();
 	const [loader, setLoader] = useState(false);
 	const [error, setError] = useState(false);
+	const location = useLocation();
+	const backLocation = useRef(location.state ?? '/');
 	useEffect(() => {
 		const request = async () => {
 			try {
@@ -27,20 +30,24 @@ export default function MovieDetailsPage() {
 	}, [movieID]);
 	return (
 		<div>
-			<Link to="/">Go back</Link>
+			<Link to={backLocation.current} className={css.link}>
+				Go back
+			</Link>
 			{movieInfo && <MovieDetailsPageItem movieInfo={movieInfo} />}
-			<p>Additional information</p>
-			<ul>
-				<li>
+
+			<ul className={css.list}>
+				<h2 className={css.title}>Additional information:</h2>
+				<li className={css.item}>
 					<Link to={'cast'}>Cast</Link>
 				</li>
-				<li>
+				<li className={css.item}>
 					<Link to={'reviews'}>Reviews</Link>
 				</li>
 			</ul>
-			{loader && <Loader />}
 			{error && <ErrorMessage />}
-			<Outlet />
+			<Suspense fallback={<Loader />}>
+				<Outlet />
+			</Suspense>
 		</div>
 	);
 }

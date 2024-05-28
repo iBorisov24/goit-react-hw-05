@@ -3,7 +3,7 @@ import { fetchFilmList } from '../../fetchUrl';
 import { useState, useEffect } from 'react';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-
+import css from './HomePage.module.css';
 export default function HomePage() {
 	const [collection, setCollection] = useState([]);
 	const [loader, setLoader] = useState(false);
@@ -25,19 +25,25 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<ul>
-			Trending today:
-			{collection.map(item => {
-				return (
-					<li key={item.id}>
-						<Link to={`/movies/${item.id}`} state={location.pathname}>
-							{item.original_title}
-						</Link>
-					</li>
-				);
-			})}
-			{loader && <Loader />}
-			{error && <ErrorMessage />}
-		</ul>
+		<>
+			<h2 className={css.title}>Trending today:</h2>
+			<ol className={css.list}>
+				{collection.map(item => {
+					return (
+						<li key={item.id} className={css.listItem}>
+							<Link
+								className={css.link}
+								to={`/movies/${item.id}`}
+								state={location.pathname}
+							>
+								{item.original_title}
+							</Link>
+						</li>
+					);
+				})}
+				{loader && <Loader />}
+				{error && <ErrorMessage />}
+			</ol>
+		</>
 	);
 }

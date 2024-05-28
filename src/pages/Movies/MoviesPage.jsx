@@ -6,6 +6,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { fetchFilmByQuery } from '../../fetchUrl';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import MoviesList from '../../components/MoviesList/MoviesList';
+import css from './MoviesPage.module.css';
 export default function MoviesPage() {
 	const [error, setError] = useState(false);
 	const [loader, setLoader] = useState(false);
@@ -39,7 +40,8 @@ export default function MoviesPage() {
 			<Formik
 				onSubmit={(values, actions) => {
 					if (values.data.trim() == '') {
-						toast.error('Please,type any query', { position: 'top-right' });
+						alert('Please, type any query');
+						// toast.error('Please,type any query', { position: 'top-right' });
 					} else {
 						onSubmit(values.data);
 					}
@@ -47,9 +49,11 @@ export default function MoviesPage() {
 				}}
 				initialValues={{ data: query }}
 			>
-				<Form>
-					<Field name="data"></Field>
-					<button type="submit" name="submitBtn"></button>
+				<Form className={css.form}>
+					<Field className={css.input} name="data"></Field>
+					<button className={css.btn} type="submit" name="submitBtn">
+						Find
+					</button>
 				</Form>
 			</Formik>
 			<MoviesList filmListByQuery={filmListByQuery} location={location} />
