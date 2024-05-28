@@ -3,7 +3,7 @@ import { fetchCastInfo } from '../../fetchUrl';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import css from './Cast.module.css';
+import css from './MovieCast.module.css';
 
 export default function Cast() {
 	const { movieID } = useParams({});

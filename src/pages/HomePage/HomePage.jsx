@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import css from './HomePage.module.css';
+import MovieList from '../../components/MovieList/MovieList';
 export default function HomePage() {
 	const [collection, setCollection] = useState([]);
 	const [loader, setLoader] = useState(false);
 	const [error, setError] = useState(false);
-	const location = useLocation();
 	useEffect(() => {
 		const request = async () => {
 			try {
@@ -28,19 +28,7 @@ export default function HomePage() {
 		<>
 			<h2 className={css.title}>Trending today:</h2>
 			<ol className={css.list}>
-				{collection.map(item => {
-					return (
-						<li key={item.id} className={css.listItem}>
-							<Link
-								className={css.link}
-								to={`/movies/${item.id}`}
-								state={location.pathname}
-							>
-								{item.original_title}
-							</Link>
-						</li>
-					);
-				})}
+				<MovieList collection={collection} />
 				{loader && <Loader />}
 				{error && <ErrorMessage />}
 			</ol>

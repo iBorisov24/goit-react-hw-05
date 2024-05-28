@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import toast, { Toaster } from 'react-hot-toast';
-import css from './Reviews.module.css';
+import css from './MovieReviews.module.css';
 export default function Reviews() {
 	const { movieID } = useParams({});
 	const [reviewsInfo, setReviewsInfo] = useState([]);

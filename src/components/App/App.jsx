@@ -7,9 +7,9 @@ const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const MovieDetailsPage = lazy(() =>
 	import('../../pages/MovieDetailsPage/MovieDetailsPage')
 );
-const Cast = lazy(() => import('../../pages/Cast/Cast'));
-const Reviews = lazy(() => import('../../pages/Reviews/Reviews'));
-const MoviesPage = lazy(() => import('../../pages/Movies/MoviesPage'));
+const Cast = lazy(() => import('../../pages/MovieCast/MovieCast'));
+const Reviews = lazy(() => import('../../pages/MovieReviews/MovieReviews'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviesPage'));
 const Loader = lazy(() => import('../Loader/Loader'));
 
 function App() {
